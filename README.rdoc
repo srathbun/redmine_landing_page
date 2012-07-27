@@ -14,3 +14,12 @@ For 2.X.X branches, install to redmine/plugins directory and run these commands:
 Open the administration panel and go to a user. There is a new input box, which is their landing page. Set it to the page wanted.
 
 You can also set the landing page for a project, by going to the project settings, and filling in the input box there.
+
+The page must include a leading path, since it is appended raw to the root redmine path (usually the ip address).
+
+= adding a default page
+
+  * Log in to your database, this is example is show for a mysql db.
+  * alter table railsapp_production.users alter landing_page set default "default page to use";
+  * You can also update all users with the following command
+  * update railsapp_production.users set landing_page = "default page to use";
