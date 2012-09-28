@@ -7,6 +7,16 @@ Redmine::Plugin.register :redmine_landing_page do
   version '0.0.2'
   url 'https://github.com/biow0lf/redmine_landing_page'
   author_url 'https://github.com/biow0lf'
+
+  delete_menu_item :top_menu, :home
+  menu :top_menu, :home, { :controller => 'welcome', :action => 'index', :main => 'welcome' }, :caption => :label_home, :before => :my_page
+
+  delete_menu_item :project_menu, :overview
+  menu :project_menu, :overview, { :controller => 'projects', :action => 'show', :overview => 'overview' }, :caption => :label_overview, :before => :activity, :param => :id
+
+  settings :default => {"default_landing_page" => "",
+                        "default_project_landing_page" => ""},
+           :partial => "landing_page/landing_page_settings"
 end
 
 require 'dispatcher' unless Rails::VERSION::MAJOR >= 3
