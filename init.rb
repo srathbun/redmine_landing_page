@@ -9,19 +9,36 @@ Redmine::Plugin.register :redmine_landing_page do
   author_url 'https://github.com/biow0lf'
 end
 
-require 'dispatcher'
-Dispatcher.to_prepare :redmine_contracts do
-  require_dependency 'projects_controller'
-  ProjectsController.send(:include, RedmineLandingPage::Patches::ProjectsControllerPatch)
+require 'dispatcher' unless Rails::VERSION::MAJOR >= 3
 
-  require_dependency 'project'
-  Project.send(:include, RedmineLandingPage::Patches::ProjectPatch)
+if Rails::VERSION::MAJOR >= 3
+  ActionDispatch::Callbacks.to_prepare do
+    require_dependency 'projects_controller'
+    ProjectsController.send(:include, RedmineLandingPage::Patches::ProjectsControllerPatch)
 
-  require_dependency 'principal'
-  User.send(:include, RedmineLandingPage::Patches::UserPatch)
+    require_dependency 'project'
+    Project.send(:include, RedmineLandingPage::Patches::ProjectPatch)
 
-  require_dependency 'welcome_controller'
-  WelcomeController.send(:include, RedmineLandingPage::Patches::WelcomeControllerPatch)
+    require_dependency 'principal'
+    User.send(:include, RedmineLandingPage::Patches::UserPatch)
+
+    require_dependency 'welcome_controller'
+    WelcomeController.send(:include, RedmineLandingPage::Patches::WelcomeControllerPatch)
+  end
+else
+  Dispatcher.to_prepare :redmine_contracts do
+    require_dependency 'projects_controller'
+    ProjectsController.send(:include, RedmineLandingPage::Patches::ProjectsControllerPatch)
+
+    require_dependency 'project'
+    Project.send(:include, RedmineLandingPage::Patches::ProjectPatch)
+
+    require_dependency 'principal'
+    User.send(:include, RedmineLandingPage::Patches::UserPatch)
+
+    require_dependency 'welcome_controller'
+    WelcomeController.send(:include, RedmineLandingPage::Patches::WelcomeControllerPatch)
+  end
 end
 
 require 'redmine_landing_page/hooks/view_projects_form_hook'
