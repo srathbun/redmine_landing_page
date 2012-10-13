@@ -1,3 +1,5 @@
 # English strings go here for Rails i18n
 en:
   field_landing_page: "Landing Page"
+  label_default_landing_page: "Default Landing Page for Redmine"
+  label_default_project_landing_page: "Default Landing Page for projects"

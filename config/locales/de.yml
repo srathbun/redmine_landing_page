@@ -1,3 +1,5 @@
 # German translation by Tobias Fischer https://github.com/paginagmbh
 de:
   field_landing_page: "Startseite"
+  label_default_landing_page: "Standard Startseite für Redmine"
+  label_default_project_landing_page: "Standard Startseite für Projekte"
