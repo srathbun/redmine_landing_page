@@ -1,5 +1,21 @@
 = redmine_landing_page
 
-Landing Page plugin for redmine. Tested with redmine 1.1.2 and 1.3.0.
+Landing Page plugin for redmine. Tested with redmine 1.1.2, 1.3.0, 1.4.x and 2.x.
 
-Install to redmine/vendor/plugins directory and run rake db:migrate_plugins.
+For 1.X.X branches:
+  * install to redmine/vendor/plugins directory
+  * run the command: rake db:migrate_plugins
+  * restart webserver
+
+For 2.X.X branches:
+  * install to redmine/plugins directory
+  * run the command: rake redmine:plugins:migrate
+  * restart webserver
+
+= Using the plugin
+
+Open the administration panel and go to a user. There is a new input box, which is their landing page. Set it to the page wanted.
+
+You can also set the landing page for a project, by going to the project settings, and filling in the input box there.
+
+The default landing pages can be changed in the plugin configuration under administration panel -> plugins.
