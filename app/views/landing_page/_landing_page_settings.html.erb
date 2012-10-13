@@ -1,0 +1,8 @@
+<p>
+  <%= label_tag("settings[default_landing_page]", l(:label_default_landing_page)) %>
+  <%= text_field_tag("settings[default_landing_page]", @settings["default_landing_page"], :placeholder => "projects") %>  
+</p>
+<p>
+  <%= label_tag("settings[default_project_landing_page]", l(:label_default_project_landing_page)) %>
+  <%= text_field_tag("settings[default_project_landing_page]", @settings["default_project_landing_page"], :placeholder => "issues/gantt") %>
+</p>
