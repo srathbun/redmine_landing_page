@@ -1,0 +1,5 @@
+# Simplified Chinese strings go here for Rails i18n
+zh:
+  field_landing_page: "我的登录后首页"
+  label_default_landing_page: "系统登录后默认首页"
+  label_default_project_landing_page: "登陆后项目的默认首页"
